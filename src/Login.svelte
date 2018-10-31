@@ -9,7 +9,8 @@
 </p>
 
 <script>
-import auth from 'solid-auth-client';
+// import auth from 'solid-auth-client';
+const auth = solid.auth;
 export default {
     oncreate() {
         auth.trackSession(session => {
