@@ -56,5 +56,8 @@ module.exports = {
             chunks: ['main']
         })
 	],
+    externals: {
+        '@trust/webcrypto': 'crypto'
+    },
 	devtool: prod ? false: 'source-map'
 };
