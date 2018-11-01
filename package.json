@@ -19,6 +19,7 @@
     "dev": "webpack-dev-server --content-base public"
   },
   "dependencies": {
-    "solid-auth-client": "^2.2.10"
+    "solid-auth-client": "^2.2.10",
+    "wac": "github:JordanShurmer/wac"
   }
 }

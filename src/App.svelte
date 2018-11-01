@@ -1,15 +1,22 @@
 <h1>Personal Solid Pod</h1>
-<Login loggedIn="{user.loggedIn}"></Login>
+
+<Login bind:user=user></Login>
+
+<Acl></Acl>
 
 <script>
 export default {
     data() {
         return {
-            user: {}
+            user: {
+                loggedIn: false,
+                webId: ''
+            }
         }
     },
     components: {
         Login: './Login.svelte',
+        Acl: './Acl.svelte',
     }
 }
 </script>

@@ -1,6 +1,7 @@
+
 <p>
-{#if loggedIn}
-  You are logged in.
+{#if user.loggedIn}
+  You are logged in as {user.webId}.
   <button on:click="logout()">Logout</button>
 {:else}
   You are not logged in.
@@ -10,10 +11,14 @@
 
 <script>
 import auth from 'solid-auth-client';
+
 export default {
     oncreate() {
         auth.trackSession(session => {
-            this.set({loggedIn: !!session})
+            this.set({user: {
+                loggedIn: !!session,
+                webId: session && session.webId || ''
+            }});
         })
     },
     methods: {
@@ -26,7 +31,10 @@ export default {
             if (!session) {
                 await auth.popupLogin({popupUri: "https://solid.github.io/solid-auth-client/dist/popup.html"});
             } else {
-                this.loggedIn = true;
+                this.set({user: {
+                    loggedIn: true,
+                    webId: session.webId
+                }});
             }
         }
     }
